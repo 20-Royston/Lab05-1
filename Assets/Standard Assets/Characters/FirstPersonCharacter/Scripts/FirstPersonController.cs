@@ -273,6 +273,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if(other.gameObject.tag == "Water")
             {
                 SceneManager.LoadScene("LoseScene");
+                
             }
         }
     }

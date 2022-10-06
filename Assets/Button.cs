@@ -14,7 +14,10 @@ public class Button : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
     public void OnRestartClick()
     {
