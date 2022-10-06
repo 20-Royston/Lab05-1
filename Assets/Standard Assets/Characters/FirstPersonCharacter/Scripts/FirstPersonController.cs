@@ -45,8 +45,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
         public int score;
+        public int timeleft;
+        public float time;
         public Text scoretxt;
-
+        public Text timetxt;
 
         // Use this for initialization
         private void Start()
@@ -92,8 +94,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 SceneManager.LoadScene("WinScene");
             }
+
+            if(time > 0)
+            {
+                time -= Time.deltaTime;
+                timeleft = Mathf.FloorToInt(time % 60);
+                timetxt.text = "Time: " + timeleft.ToString();
+
+            }
+            else
+            {
+                SceneManager.LoadScene("LoseScene");
+            }
         }
 
+       
 
         private void PlayLandingSound()
         {
