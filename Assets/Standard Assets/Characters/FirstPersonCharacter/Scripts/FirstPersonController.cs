@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -41,6 +43,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+
+        public int score;
+        public Text scoretxt;
+
 
         // Use this for initialization
         private void Start()
@@ -254,6 +260,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.tag == "Coin")
+            {
+                score = score + 10;
+                Destroy(other.gameObject);
+                scoretxt.text = "Score: " + score;
+            }
+            if(other.gameObject.tag == "Water")
+            {
+                SceneManager.LoadScene("LoseScene");
+            }
         }
     }
 }
