@@ -50,6 +50,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Text scoretxt;
         public Text timetxt;
 
+        public GameObject coinfx;
+
         // Use this for initialization
         private void Start()
         {
@@ -289,6 +291,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 score = score + 10;
                 Destroy(other.gameObject);
                 scoretxt.text = "Score: " + score;
+                Instantiate(coinfx, other.transform.position, Quaternion.identity);
             }
             if(other.gameObject.tag == "Water")
             {
