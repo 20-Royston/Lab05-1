@@ -87,6 +87,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if(score == 60)
+            {
+                SceneManager.LoadScene("WinScene");
+            }
         }
 
 
